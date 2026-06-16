@@ -2,9 +2,17 @@
 
 ``` bash
 diary-tracker/
+├── docs/
+│   ├── consider.md
+│   └── project-tree.md
+│
+├── script/
+│   └── bash/
+│       └── shell-profiling.sh
+│
 ├── src/
 │   ├── main/
-│   │   ├── java/com/yourname/diarytracker/
+│   │   ├── java/com/yourname/diarytracker/ (TODO)
 │   │   │   ├── DiaryTrackerApplication.java
 │   │   │   │
 │   │   │   ├── config/
@@ -50,6 +58,7 @@ diary-tracker/
 │   │   └── resources/
 │   │       ├── application.yml
 │   │       ├── application-dev.yml
+│   │       ├── application-test.yml
 │   │       ├── application-prod.yml
 │   │       └── db/migration/
 │   │           ├── V1__init_users_table.sql
@@ -63,10 +72,11 @@ diary-tracker/
 │           └── user/
 │               └── AuthControllerIT.java
 │
-├── docker-compose.yml
+│
+├── compose.yml
 ├── Dockerfile
 ├── .env.example
 ├── .gitignore
 ├── pom.xml (or build.gradle)
-└── README.md
+└── README.md  (TODO)
 ```
