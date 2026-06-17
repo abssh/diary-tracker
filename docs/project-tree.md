@@ -46,11 +46,10 @@ diary-tracker/
 │   │   │   │       └── EntryResponse.java
 │   │   │   │
 │   │   │   ├── common/
-│   │   │   │   ├── exception/
-│   │   │   │   │   ├── GlobalExceptionHandler.java
-│   │   │   │   │   ├── ResourceNotFoundException.java
-│   │   │   │   │   └── UnauthorizedAccessException.java
-│   │   │   │   └── BaseEntity.java            (createdAt/updatedAt fields)
+│   │   │   │   └── exception/
+│   │   │   │       ├── GlobalExceptionHandler.java
+│   │   │   │       ├── ResourceNotFoundException.java
+│   │   │   │       └── UnauthorizedAccessException.java
 │   │   │   │
 │   │   │   └── util/
 │   │   │       └── DateUtils.java
