@@ -31,10 +31,13 @@ diary-tracker/
 │   │   │   │   ├── UserService.java
 │   │   │   │   ├── AuthController.java        (register/login)
 │   │   │   │   └── dto/
-│   │   │   │       ├── RegisterRequest.java
-│   │   │   │       ├── LoginRequest.java
-│   │   │   │       └── AuthResponse.java
-│   │   │   │
+│   │   │   │       ├── response
+│   │   │   │       │   └── AuthResponse.java
+│   │   │   │       │
+│   │   │   │       └── request
+│   │   │   │           ├── RegisterRequest.java
+│   │   │   │           └── LoginRequest.java
+│   │   │   │           
 │   │   │   ├── entry/
 │   │   │   │   ├── DiaryEntry.java            (entity)
 │   │   │   │   ├── DiaryEntryRepository.java
@@ -47,10 +50,10 @@ diary-tracker/
 │   │   │   │
 │   │   │   ├── common/
 │   │   │   │   ├── exception/
-│   │   │   │   │   ├── GlobalExceptionHandler.java
-│   │   │   │   │   ├── ResourceNotFoundException.java
+│   │   │   │   │   ├── UsernameAlreadyExistsException.java
 │   │   │   │   │   └── UnauthorizedAccessException.java
-│   │   │   │   └── BaseEntity.java            (createdAt/updatedAt fields)
+│   │   │   │   │
+│   │   │   │   └── GlobalExceptionHadler.java
 │   │   │   │
 │   │   │   └── util/
 │   │   │       └── DateUtils.java
@@ -77,6 +80,6 @@ diary-tracker/
 ├── Dockerfile
 ├── .env.example
 ├── .gitignore
-├── pom.xml (or build.gradle)
-└── README.md  (TODO)
+├── pom.xml
+└── README.md
 ```
