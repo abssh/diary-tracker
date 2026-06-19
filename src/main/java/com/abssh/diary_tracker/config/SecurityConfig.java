@@ -1,6 +1,5 @@
 package com.abssh.diary_tracker.config;
 
-import com.abssh.diary_tracker.user.AuthController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
