@@ -29,7 +29,7 @@ public class AuthController {
         
         SignedUserResponse response = userService.register(entity);
         return ResponseEntity
-            .created(URI.create("/admin/users/" + response.id())) /* un implemented /admin/users */
+            .created(URI.create("/users/" + response.username())) /* un implemented /users/${username} */
             .body(response);
     }
 

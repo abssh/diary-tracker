@@ -33,9 +33,10 @@ public class UserService {
             .username(request.username())
             .passwordHash(passwordHash)
             .build();
-
         User saved = userRepository.save(user);
-        return SignedUserResponse.from(saved);
+
+        String token = jwtService.generateToken(saved.getId());
+        return new SignedUserResponse(token,saved.getUsername());
     }
 
     public LoginResponse login(LoginRequest request) {
