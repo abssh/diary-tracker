@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.abssh.diary_tracker.common.dto.ErrorResponse;
+import com.abssh.diary_tracker.common.exceptions.InvalidCredentialsException;
 import com.abssh.diary_tracker.common.exceptions.UsernameAlreadyExistsException;
 
 @RestControllerAdvice
@@ -16,6 +17,13 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleUsernameAlreadyExists(UsernameAlreadyExistsException ex) {
         return ResponseEntity
             .status(HttpStatus.CONFLICT)
+            .body(new ErrorResponse(ex.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidCredentials(InvalidCredentialsException ex) {
+        return ResponseEntity
+            .status(HttpStatus.UNAUTHORIZED)
             .body(new ErrorResponse(ex.getMessage()));
     }
 

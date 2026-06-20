@@ -12,7 +12,7 @@ diary-tracker/
 │
 ├── src/
 │   ├── main/
-│   │   ├── java/com/yourname/diarytracker/ (TODO)
+│   │   ├── java/com/abssh/diary_tracker/ (TODO)
 │   │   │   ├── DiaryTrackerApplication.java
 │   │   │   │
 │   │   │   ├── config/
@@ -23,7 +23,8 @@ diary-tracker/
 │   │   │   ├── security/
 │   │   │   │   ├── JwtAuthFilter.java
 │   │   │   │   ├── JwtService.java
-│   │   │   │   └── CustomUserDetailsService.java
+│   │   │   │   ├── CustomUserDetailsService.java
+|   |   |   |   └── UserWrapper.java
 │   │   │   │
 │   │   │   ├── user/
 │   │   │   │   ├── User.java                  (entity)
@@ -68,7 +69,7 @@ diary-tracker/
 │   │           └── V2__init_diary_entries_table.sql
 │   │
 │   └── test/
-│       └── java/com/yourname/diarytracker/
+│       └── java/com/abssh/diary_tracker/
 │           ├── entry/
 │           │   ├── DiaryEntryServiceTest.java
 │           │   └── DiaryEntryControllerIT.java   (Testcontainers)
