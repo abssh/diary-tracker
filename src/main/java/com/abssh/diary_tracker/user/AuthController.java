@@ -3,7 +3,9 @@ package com.abssh.diary_tracker.user;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.abssh.diary_tracker.user.dto.request.LoginRequest;
 import com.abssh.diary_tracker.user.dto.request.RegisterRequest;
+import com.abssh.diary_tracker.user.dto.response.LoginResponse;
 import com.abssh.diary_tracker.user.dto.response.SignedUserResponse;
 
 import lombok.AllArgsConstructor;
@@ -30,4 +32,11 @@ public class AuthController {
             .created(URI.create("/admin/users/" + response.id())) /* un implemented /admin/users */
             .body(response);
     }
+
+    @PostMapping("login")
+    public ResponseEntity<LoginResponse> logUserIn(@RequestBody LoginRequest entity) {
+        LoginResponse response = userService.login(entity);
+        return ResponseEntity.ok(response);
+    }
+    
 }
