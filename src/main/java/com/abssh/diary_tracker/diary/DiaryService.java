@@ -2,6 +2,8 @@ package com.abssh.diary_tracker.diary;
 
 import java.util.UUID;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.abssh.diary_tracker.common.exceptions.DiaryNotFoundException;
@@ -22,20 +24,26 @@ public class DiaryService {
         User user = userRepository.getReferenceById(userId);
 
         Diary diary = Diary.builder()
-            .user(user)
-            .title(request.title())
-            .description(request.description())
-            .build();
-        
+                .user(user)
+                .title(request.title())
+                .description(request.description())
+                .build();
+
         Diary saved = diaryRepository.save(diary);
         return DiaryResponse.from(saved);
     }
 
     public DiaryResponse getUserDiary(UUID userId, UUID diaryId) {
         Diary diary = diaryRepository
-            .findByIdAndUserId(diaryId, userId)
-            .orElseThrow(() -> new DiaryNotFoundException(diaryId));
+                .findByIdAndUserId(diaryId, userId)
+                .orElseThrow(() -> new DiaryNotFoundException(diaryId));
 
         return DiaryResponse.from(diary);
+    }
+
+    public Page<DiaryResponse> getAllUserDiaries(UUID userId, Pageable pagable) {
+        Page<Diary> diaryPage = diaryRepository.findByUserId(userId, pagable);
+
+        return diaryPage.map(diary -> DiaryResponse.from(diary));
     }
 }

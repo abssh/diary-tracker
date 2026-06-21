@@ -13,6 +13,10 @@ import lombok.RequiredArgsConstructor;
 import java.net.URI;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,4 +49,13 @@ public class DiaryController {
         return ResponseEntity
                 .ok(response);
     }
+
+    @GetMapping("")
+    public ResponseEntity<Page<DiaryResponse>> getAllDiaries(
+            @AuthenticationPrincipal UserWrapper userWrapper,
+            @PageableDefault(size = 20, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<DiaryResponse> responsPage = diaryService.getAllUserDiaries(userWrapper.getUser().getId(), pageable);
+        return ResponseEntity.ok(responsPage);
+    }
+
 }
