@@ -84,7 +84,7 @@ db-clean: check-env
 	podman exec diary-postgres-$(ENV) psql -U $(DB_USERNAME) -d postgres \
 		-c "DROP DATABASE IF EXISTS $(DB_NAME);"
 	podman exec diary-postgres-$(ENV) psql -U $(DB_USERNAME) -d postgres \
-		-c "CREATE DATABASE '$(DB_NAME)';"
+		-c "CREATE DATABASE $(DB_NAME);"
 	@$(MAKE) ENV=$(ENV) db-migrate
 	@echo "$(ENV) database cleaned and migrated."
 
