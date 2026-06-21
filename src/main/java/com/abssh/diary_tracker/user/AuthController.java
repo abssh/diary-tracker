@@ -8,6 +8,7 @@ import com.abssh.diary_tracker.user.dto.request.RegisterRequest;
 import com.abssh.diary_tracker.user.dto.response.LoginResponse;
 import com.abssh.diary_tracker.user.dto.response.SignedUserResponse;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 import java.net.URI;
@@ -25,7 +26,7 @@ public class AuthController {
     private final UserService userService;
 
     @PostMapping("signup")
-    public ResponseEntity<SignedUserResponse> signUserUp(@RequestBody RegisterRequest entity) {
+    public ResponseEntity<SignedUserResponse> signUserUp(@Valid @RequestBody RegisterRequest entity) {
         
         SignedUserResponse response = userService.register(entity);
         return ResponseEntity
@@ -34,7 +35,7 @@ public class AuthController {
     }
 
     @PostMapping("login")
-    public ResponseEntity<LoginResponse> logUserIn(@RequestBody LoginRequest entity) {
+    public ResponseEntity<LoginResponse> logUserIn(@Valid @RequestBody LoginRequest entity) {
         LoginResponse response = userService.login(entity);
         return ResponseEntity.ok(response);
     }
