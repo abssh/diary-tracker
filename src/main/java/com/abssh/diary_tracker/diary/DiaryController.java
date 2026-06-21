@@ -4,8 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abssh.diary_tracker.diary.dto.requests.CreateDiaryRequest;
-import com.abssh.diary_tracker.diary.dto.response.CreateDiaryResponse;
-import com.abssh.diary_tracker.diary.dto.response.GetDiaryResponse;
+import com.abssh.diary_tracker.diary.dto.response.DiaryResponse;
 import com.abssh.diary_tracker.security.UserWrapper;
 
 import jakarta.validation.Valid;
@@ -29,22 +28,21 @@ public class DiaryController {
     private final DiaryService diaryService;
 
     @PostMapping("")
-    public ResponseEntity<CreateDiaryResponse> createDiary(
+    public ResponseEntity<DiaryResponse> createDiary(
             @AuthenticationPrincipal UserWrapper userWrapper,
             @Valid @RequestBody CreateDiaryRequest entity) {
-        CreateDiaryResponse response = diaryService.createUserDiary(userWrapper.getUser().getId(), entity);
+        DiaryResponse response = diaryService.createUserDiary(userWrapper.getUser().getId(), entity);
         return ResponseEntity
                 .created(URI.create("/diaries/" + response.id()))
                 .body(response);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<GetDiaryResponse> getDiary(
+    public ResponseEntity<DiaryResponse> getDiary(
             @AuthenticationPrincipal UserWrapper userWrapper,
             @PathVariable UUID id) {
-        GetDiaryResponse response = diaryService.getUserDiary(userWrapper.getUser().getId(), id);
+        DiaryResponse response = diaryService.getUserDiary(userWrapper.getUser().getId(), id);
         return ResponseEntity
                 .ok(response);
     }
-
 }

@@ -5,16 +5,15 @@ import java.util.UUID;
 
 import com.abssh.diary_tracker.diary.Diary;
 
-public record CreateDiaryResponse(
+public record DiaryResponse(
     UUID id,
     String title,
     String description,
     Instant createdAt,
-    Instant updatedAt
+    Instant UpdatedAt
 ) {
-
-    public static CreateDiaryResponse from(Diary entity) {
-        return new CreateDiaryResponse(
+    public static DiaryResponse from(Diary entity) {
+        return new DiaryResponse(
             entity.getId(),
             entity.getTitle(),
             entity.getDescription(),
