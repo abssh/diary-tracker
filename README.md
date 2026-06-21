@@ -68,9 +68,25 @@ diary-tracker/
 │   │   │   │   ├── DiaryEntryService.java
 │   │   │   │   ├── DiaryEntryController.java
 │   │   │   │   └── dto/
-│   │   │   │       ├── CreateEntryRequest.java
-│   │   │   │       ├── UpdateEntryRequest.java
-│   │   │   │       └── EntryResponse.java
+│   │   │   │       ├── response
+│   │   │   │       │   └── EntryResponse.java
+│   │   │   │       │
+│   │   │   │       └── request
+│   │   │   │           ├── CreateEntryRequest.java
+│   │   │   │           └── UpdateEntryRequest.java
+|   |   |   |
+│   │   │   ├── diary/
+│   │   │   │   ├── Diary.java            (entity)
+│   │   │   │   ├── DiaryRepository.java
+│   │   │   │   ├── DiaryService.java
+│   │   │   │   ├── DiaryController.java
+│   │   │   │   └── dto/
+│   │   │   │       ├── response
+│   │   │   │       │   └── DiaryResponse.java
+│   │   │   │       │
+│   │   │   │       └── request
+│   │   │   │           ├── CreateDiaryRequest.java
+│   │   │   │           └── UpdateDiaryRequest.java
 │   │   │   │
 │   │   │   ├── common/
 │   │   │   │   ├── exception/
