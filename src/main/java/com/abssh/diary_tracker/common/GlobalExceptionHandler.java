@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.abssh.diary_tracker.common.dto.ErrorResponse;
 import com.abssh.diary_tracker.common.exceptions.DiaryNotFoundException;
+import com.abssh.diary_tracker.common.exceptions.EntryNotFoundException;
 import com.abssh.diary_tracker.common.exceptions.InvalidCredentialsException;
 import com.abssh.diary_tracker.common.exceptions.UsernameAlreadyExistsException;
 
@@ -37,6 +38,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DiaryNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleDiaryNotFoundException(DiaryNotFoundException ex) {
+        return ResponseEntity
+            .status(HttpStatus.NOT_FOUND)
+            .body(new ErrorResponse(ex.getMessage()));
+    }
+
+    @ExceptionHandler(EntryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleEntryNotFoundException(EntryNotFoundException ex) {
         return ResponseEntity
             .status(HttpStatus.NOT_FOUND)
             .body(new ErrorResponse(ex.getMessage()));
