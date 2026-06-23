@@ -7,17 +7,23 @@ import com.abssh.diary_tracker.entry.dto.request.CreateDiaryEntryRequest;
 import com.abssh.diary_tracker.entry.dto.response.EntryResponse;
 import com.abssh.diary_tracker.security.UserWrapper;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.net.URI;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController
@@ -31,7 +37,7 @@ public class DiaryEntryController {
     public ResponseEntity<EntryResponse> createEntry(
         @AuthenticationPrincipal UserWrapper userWrapper,
         @PathVariable UUID diaryId,
-        @RequestBody CreateDiaryEntryRequest request
+        @Valid @RequestBody CreateDiaryEntryRequest request
     ) {
         
         EntryResponse response = entryService.createDairyEntry(userWrapper.getUser().getId(), diaryId, request);
@@ -56,5 +62,16 @@ public class DiaryEntryController {
         EntryResponse response = entryService.getDiaryEntry(userWrapper.getUser().getId(), diaryId, entryId);
         return ResponseEntity.ok(response);   
     }
+
+    @GetMapping("")
+    public ResponseEntity<Page<EntryResponse>> getManyEntries(
+        @AuthenticationPrincipal UserWrapper userWrapper,
+        @PathVariable UUID diaryId,
+        @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        Page<EntryResponse> responsePage = entryService.getManyDiaryEntries(userWrapper.getUser().getId(), diaryId, pageable);
+        return ResponseEntity.ok(responsePage);
+    }
+    
     
 }

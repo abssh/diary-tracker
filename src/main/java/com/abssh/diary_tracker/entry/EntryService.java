@@ -2,6 +2,8 @@ package com.abssh.diary_tracker.entry;
 
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.abssh.diary_tracker.common.exceptions.DiaryNotFoundException;
@@ -41,5 +43,11 @@ public class EntryService {
             .orElseThrow(() -> new EntryNotFoundException(entryId));
 
         return EntryResponse.from(entry);
+    }
+
+    public Page<EntryResponse> getManyDiaryEntries(UUID userId, UUID diaryId, Pageable pageable) {
+        Page<Entry> entries = entryRepository.findByDiaryIdAndUserId(diaryId, userId, pageable);
+
+        return entries.map(entry -> EntryResponse.from(entry));
     }
 }
