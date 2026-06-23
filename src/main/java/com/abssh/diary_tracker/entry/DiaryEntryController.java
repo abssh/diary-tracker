@@ -14,6 +14,7 @@ import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,6 +45,16 @@ public class DiaryEntryController {
         return ResponseEntity
             .created(URI.create(urlString))
             .body(response);
+    }
+
+    @GetMapping("{entryId}")
+    public ResponseEntity<EntryResponse> getEntry(
+        @AuthenticationPrincipal UserWrapper userWrapper,
+        @PathVariable UUID diaryId,
+        @PathVariable UUID entryId
+    ) {
+        EntryResponse response = entryService.getDiaryEntry(userWrapper.getUser().getId(), diaryId, entryId);
+        return ResponseEntity.ok(response);   
     }
     
 }

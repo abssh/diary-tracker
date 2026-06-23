@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.abssh.diary_tracker.common.exceptions.DiaryNotFoundException;
+import com.abssh.diary_tracker.common.exceptions.EntryNotFoundException;
 import com.abssh.diary_tracker.diary.Diary;
 import com.abssh.diary_tracker.diary.DiaryRepository;
 import com.abssh.diary_tracker.entry.dto.request.CreateDiaryEntryRequest;
@@ -33,5 +34,12 @@ public class EntryService {
         Entry saved = entryRepository.save(entry);
 
         return EntryResponse.from(saved);
+    }
+
+    public EntryResponse getDiaryEntry(UUID userId, UUID diaryId, UUID entryId) {
+        Entry entry = entryRepository.findByIdAndDiaryIdAndUserId(entryId, diaryId, userId)
+            .orElseThrow(() -> new EntryNotFoundException(entryId));
+
+        return EntryResponse.from(entry);
     }
 }
