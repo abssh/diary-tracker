@@ -22,6 +22,9 @@ ifneq (,$(wildcard $(ENV_FILE)))
 	export
 endif
 
+# Set DOCKER_HOST to the podman socket for the current user, so that podman compose works with testcontainers
+DOCKER_HOST := unix:///run/user/$(shell id -u)/podman/podman.sock
+
 .PHONY: help dev-run prod-run test db-migrate db-clean db-up db-down check-env
 
 help:
@@ -58,7 +61,7 @@ prod-run: check-env
 
 test:
 	@echo "Running tests (Testcontainers manages its own throwaway db)..."
-	mvn test
+	DOCKER_HOST=$(DOCKER_HOST) mvn test
 
 ## ---------------------------------------------------------------------------
 ## Database targets
