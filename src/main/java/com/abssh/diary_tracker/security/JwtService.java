@@ -38,7 +38,7 @@ public class JwtService {
 
     public boolean isTokenExpired(String token) {
         Date expirationDate = exctractAllClaims(token).getExpiration();
-        return expirationDate.before(expirationDate);
+        return expirationDate.before(new Date());
     }
 
     public boolean isTokenValid(String token, UUID userId) {
