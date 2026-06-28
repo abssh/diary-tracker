@@ -1,7 +1,6 @@
 package com.abssh.diary_tracker.user;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
@@ -22,7 +21,7 @@ public class UserRepositoryTest extends IntegrationTest {
         user.setPasswordHash("password");
 
         User saved = userRepository.save(user);
-        assertNotNull(saved.getId());
+        assertThat(saved).isNotNull();
     }
 
     @Test
@@ -33,7 +32,7 @@ public class UserRepositoryTest extends IntegrationTest {
 
         userRepository.save(user);
         Optional<User> found = userRepository.findByUsername("testuser2");
-        assertTrue(found.isPresent());
+        assertThat(found).isPresent();
     }
 
     @Test
@@ -44,6 +43,6 @@ public class UserRepositoryTest extends IntegrationTest {
 
         userRepository.save(user);
         boolean exists = userRepository.existsByUsername("testuser3");
-        assertTrue(exists);
+        assertThat(exists).isTrue();
     }
 }
