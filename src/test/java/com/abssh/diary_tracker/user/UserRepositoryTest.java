@@ -1,49 +1,71 @@
 package com.abssh.diary_tracker.user;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.abssh.diary_tracker.IntegrationTest;
+
+import jakarta.persistence.EntityManager;
 
 public class UserRepositoryTest extends IntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private EntityManager entityManager;
+
+    private User testUser;
+
+    @BeforeEach
+    void setup() {
+        testUser = new User();
+        testUser.setUsername("testuser");
+        testUser.setPasswordHash("hashedPassword");
+    }
+
     @Test
     void shouldSaveUser() {
-        var user = new User();
-        user.setUsername("testuser");
-        user.setPasswordHash("password");
+        User saved = userRepository.save(testUser);
+        assertThat(saved).isNotNull();
 
-        User saved = userRepository.save(user);
-        assertNotNull(saved.getId());
+        // forcing hibernate to write creation timestamp
+        entityManager.flush();
+        entityManager.refresh(saved);
+
+
+        assertThat(saved.getId()).isNotNull();
+        assertThat(saved.getUsername()).isEqualTo("testuser");
+        assertThat(saved.getCreatedAt()).isNotNull();
     }
 
     @Test
     void shouldFindUserByUsername() {
-        var user = new User();
-        user.setUsername("testuser2");
-        user.setPasswordHash("password");
+        userRepository.save(testUser);
 
-        userRepository.save(user);
-        Optional<User> found = userRepository.findByUsername("testuser2");
-        assertTrue(found.isPresent());
+        Optional<User> found = userRepository.findByUsername("testuser");
+        assertThat(found).isPresent();
     }
 
     @Test
     void shouldCheckIfUserExistsByUsername() {
-        var user = new User();
-        user.setUsername("testuser3");
-        user.setPasswordHash("password");
+        userRepository.save(testUser);
 
-        userRepository.save(user);
-        boolean exists = userRepository.existsByUsername("testuser3");
-        assertTrue(exists);
+        boolean exists = userRepository.existsByUsername("testuser");
+        assertThat(exists).isTrue();
+    }
+
+    @Test
+    void shouldReturnEmptyWhenUserNotFound() {
+        assertThat(userRepository.findByUsername("ghost")).isEmpty();
+    }
+
+    void shouldReturnFalseWhenUserDoseNotExsist() {
+        assertThat(userRepository.existsByUsername("ghost")).isFalse();
     }
 }
