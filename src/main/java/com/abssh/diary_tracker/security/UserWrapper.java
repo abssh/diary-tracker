@@ -6,7 +6,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.abssh.diary_tracker.user.User;
+import com.abssh.diary_tracker.user.types.entity.User;
 
 import io.jsonwebtoken.lang.Collections;
 

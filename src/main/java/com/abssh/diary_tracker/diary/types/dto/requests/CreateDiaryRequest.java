@@ -1,4 +1,4 @@
-package com.abssh.diary_tracker.diary.dto.requests;
+package com.abssh.diary_tracker.diary.types.dto.requests;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

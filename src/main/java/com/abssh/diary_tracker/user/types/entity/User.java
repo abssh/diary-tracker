@@ -1,4 +1,4 @@
-package com.abssh.diary_tracker.user;
+package com.abssh.diary_tracker.user.types.entity;
 
 import java.time.Instant;
 

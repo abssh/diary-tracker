@@ -1,9 +1,9 @@
-package com.abssh.diary_tracker.diary.dto.response;
+package com.abssh.diary_tracker.diary.types.dto.response;
 
 import java.time.Instant;
 import java.util.UUID;
 
-import com.abssh.diary_tracker.diary.Diary;
+import com.abssh.diary_tracker.diary.types.entity.Diary;
 
 public record DiaryResponse(
     UUID id,

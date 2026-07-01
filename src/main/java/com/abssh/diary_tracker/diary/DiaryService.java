@@ -6,11 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import com.abssh.diary_tracker.common.exceptions.DiaryNotFoundException;
-import com.abssh.diary_tracker.diary.dto.requests.CreateDiaryRequest;
-import com.abssh.diary_tracker.diary.dto.response.DiaryResponse;
-import com.abssh.diary_tracker.user.User;
+import com.abssh.diary_tracker.diary.types.dto.requests.CreateDiaryRequest;
+import com.abssh.diary_tracker.diary.types.dto.response.DiaryResponse;
+import com.abssh.diary_tracker.diary.types.entity.Diary;
+import com.abssh.diary_tracker.diary.types.exceptions.DiaryNotFoundException;
 import com.abssh.diary_tracker.user.UserRepository;
+import com.abssh.diary_tracker.user.types.entity.User;
 
 import lombok.RequiredArgsConstructor;
 

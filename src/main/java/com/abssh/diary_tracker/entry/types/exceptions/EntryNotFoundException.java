@@ -1,4 +1,4 @@
-package com.abssh.diary_tracker.common.exceptions;
+package com.abssh.diary_tracker.entry.types.exceptions;
 
 import java.util.UUID;
 

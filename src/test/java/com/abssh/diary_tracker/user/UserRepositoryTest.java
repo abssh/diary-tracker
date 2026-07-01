@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.abssh.diary_tracker.IntegrationTest;
+import com.abssh.diary_tracker.user.types.entity.User;
 
 import jakarta.persistence.EntityManager;
 

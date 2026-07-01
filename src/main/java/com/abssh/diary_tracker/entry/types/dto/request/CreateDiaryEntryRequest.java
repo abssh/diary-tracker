@@ -1,9 +1,9 @@
-package com.abssh.diary_tracker.entry.dto.request;
+package com.abssh.diary_tracker.entry.types.dto.request;
 
 
 import java.time.LocalDate;
 
-import com.abssh.diary_tracker.entry.ContentType;
+import com.abssh.diary_tracker.entry.types.entity.ContentType;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

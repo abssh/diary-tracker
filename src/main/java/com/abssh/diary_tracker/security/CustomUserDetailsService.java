@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.abssh.diary_tracker.user.User;
 import com.abssh.diary_tracker.user.UserRepository;
+import com.abssh.diary_tracker.user.types.entity.User;
 
 import lombok.AllArgsConstructor;
 

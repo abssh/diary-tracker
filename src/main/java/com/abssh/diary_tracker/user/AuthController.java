@@ -3,10 +3,10 @@ package com.abssh.diary_tracker.user;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abssh.diary_tracker.user.dto.request.LoginRequest;
-import com.abssh.diary_tracker.user.dto.request.RegisterRequest;
-import com.abssh.diary_tracker.user.dto.response.LoginResponse;
-import com.abssh.diary_tracker.user.dto.response.SignedUserResponse;
+import com.abssh.diary_tracker.user.types.dto.request.LoginRequest;
+import com.abssh.diary_tracker.user.types.dto.request.RegisterRequest;
+import com.abssh.diary_tracker.user.types.dto.response.LoginResponse;
+import com.abssh.diary_tracker.user.types.dto.response.SignedUserResponse;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

@@ -1,11 +1,11 @@
-package com.abssh.diary_tracker.entry.dto.response;
+package com.abssh.diary_tracker.entry.types.dto.response;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import com.abssh.diary_tracker.entry.ContentType;
-import com.abssh.diary_tracker.entry.Entry;
+import com.abssh.diary_tracker.entry.types.entity.ContentType;
+import com.abssh.diary_tracker.entry.types.entity.Entry;
 
 public record EntryResponse(
     UUID entryId,
