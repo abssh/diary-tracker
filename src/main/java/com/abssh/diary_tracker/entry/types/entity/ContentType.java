@@ -1,4 +1,4 @@
-package com.abssh.diary_tracker.entry;
+package com.abssh.diary_tracker.entry.types.entity;
 
 public enum ContentType {
     MARKDOWN,

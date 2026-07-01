@@ -1,4 +1,4 @@
-package com.abssh.diary_tracker.diary;
+package com.abssh.diary_tracker.diary.types.entity;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.abssh.diary_tracker.user.User;
+import com.abssh.diary_tracker.user.types.entity.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

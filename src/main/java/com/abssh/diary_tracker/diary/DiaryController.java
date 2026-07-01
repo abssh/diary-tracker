@@ -3,8 +3,8 @@ package com.abssh.diary_tracker.diary;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abssh.diary_tracker.diary.dto.requests.CreateDiaryRequest;
-import com.abssh.diary_tracker.diary.dto.response.DiaryResponse;
+import com.abssh.diary_tracker.diary.types.dto.requests.CreateDiaryRequest;
+import com.abssh.diary_tracker.diary.types.dto.response.DiaryResponse;
 import com.abssh.diary_tracker.security.UserWrapper;
 
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.abssh.diary_tracker.user.dto.response;
+package com.abssh.diary_tracker.user.types.dto.response;
 
 public record SignedUserResponse(
     String accessToken,

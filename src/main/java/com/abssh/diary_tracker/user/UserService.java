@@ -3,13 +3,14 @@ package com.abssh.diary_tracker.user;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.abssh.diary_tracker.common.exceptions.InvalidCredentialsException;
-import com.abssh.diary_tracker.common.exceptions.UsernameAlreadyExistsException;
 import com.abssh.diary_tracker.security.JwtService;
-import com.abssh.diary_tracker.user.dto.request.LoginRequest;
-import com.abssh.diary_tracker.user.dto.request.RegisterRequest;
-import com.abssh.diary_tracker.user.dto.response.LoginResponse;
-import com.abssh.diary_tracker.user.dto.response.SignedUserResponse;
+import com.abssh.diary_tracker.user.types.dto.request.LoginRequest;
+import com.abssh.diary_tracker.user.types.dto.request.RegisterRequest;
+import com.abssh.diary_tracker.user.types.dto.response.LoginResponse;
+import com.abssh.diary_tracker.user.types.dto.response.SignedUserResponse;
+import com.abssh.diary_tracker.user.types.entity.User;
+import com.abssh.diary_tracker.user.types.exceptions.InvalidCredentialsException;
+import com.abssh.diary_tracker.user.types.exceptions.UsernameAlreadyExistsException;
 
 import lombok.AllArgsConstructor;
 

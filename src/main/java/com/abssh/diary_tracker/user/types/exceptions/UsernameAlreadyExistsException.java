@@ -1,4 +1,4 @@
-package com.abssh.diary_tracker.common.exceptions;
+package com.abssh.diary_tracker.user.types.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
