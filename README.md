@@ -107,7 +107,7 @@ diary-tracker/
 │
 ├── src/
 │   ├── main/
-│   │   ├── java/com/abssh/diary_tracker/ (TODO)
+│   │   ├── java/com/abssh/diary_tracker/
 │   │   │   ├── DiaryTrackerApplication.java
 │   │   │   │
 │   │   │   ├── config/
@@ -193,44 +193,7 @@ diary-tracker/
 ├── .env.example
 ├── .gitignore
 ├── pom.xml
-└── README.mdser.java
-│   │   │                   │   └── exceptions
-│   │   │                   │       ├── InvalidCredentialsException.java
-│   │   │                   │       └── UsernameAlreadyExistsException.java
-│   │   │                   ├── UserExceptionHandler.java
-│   │   │                   ├── UserRepository.java
-│   │   │                   └── UserService.java
-│   │   └── resources
-│   │       ├── application-dev.yaml
-│   │       ├── application-prod.yaml
-│   │       ├── application-test.yaml
-│   │       ├── application.yaml
-│   │       └── db
-│   │           └── migration
-│   │               ├── V1__init_users_table.sql
-│   │               ├── V2__init_diaries_table.sql
-│   │               └── V3__init_diary_entries.sql
-│   └── test
-│       └── java
-│           └── com
-│               └── abssh
-│                   └── diary_tracker
-│                       ├── DiaryTrackerApplicationTests.java
-│                       ├── IntegrationTest.java
-│                       ├── TestcontainersConfiguration.java
-│                       ├── TestDiaryTrackerApplication.java
-│                       └── user
-│                           ├── AuthControllerTest.java
-│                           ├── UserRepositoryTest.java
-│                           └── UserServiceTest.java
-│
-│
-├── compose.yml
-├── Dockerfile
-├── .env.example
-├── .gitignore
-├── pom.xml
-└── README.md
+└── README
 ```
 
 ## Prerequisites
@@ -260,7 +223,7 @@ JWT_SECRET=<generate with: openssl rand -base64 64 | tr -d '\n'>
 ### 2. Run locally (dev)
  
 ```bash
-make dev-run # TODO add docker support
+make dev-run
 ```
  
 This starts the dev Postgres container, waits for it to be healthy, runs Flyway migrations, and starts the app with the `dev` Spring profile.
