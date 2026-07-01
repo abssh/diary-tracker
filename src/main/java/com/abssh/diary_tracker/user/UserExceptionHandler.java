@@ -1,5 +1,7 @@
 package com.abssh.diary_tracker.user;
 
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,7 +12,9 @@ import com.abssh.diary_tracker.user.types.exceptions.InvalidCredentialsException
 import com.abssh.diary_tracker.user.types.exceptions.UsernameAlreadyExistsException;
 
 @RestControllerAdvice
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class UserExceptionHandler {
+
     @ExceptionHandler(UsernameAlreadyExistsException.class)
     public ResponseEntity<ErrorResponse> handleUsernameAlreadyExists(UsernameAlreadyExistsException ex) {
         return ResponseEntity

@@ -2,6 +2,8 @@ package com.abssh.diary_tracker.common;
 
 import java.util.List;
 
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -13,6 +15,7 @@ import com.abssh.diary_tracker.common.dto.ErrorResponse;
 import com.abssh.diary_tracker.common.exceptions.EntityNotFoundException;
 
 @RestControllerAdvice
+@Order(Ordered.LOWEST_PRECEDENCE)
 public class GlobalExceptionHandler {
     
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
