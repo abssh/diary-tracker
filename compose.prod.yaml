@@ -28,7 +28,7 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       DB_URL: jdbc:postgresql://postgres:5432/${DB_NAME}
     ports:
-      - "8080:8080"
+      - "8070:8080"
 
 volumes:
   postgres_prod_data:
