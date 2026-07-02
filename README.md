@@ -1,5 +1,8 @@
 # Diary Tracker
 
+🔗 **Live API:** https://diary-tracker.onrender.com  
+*(hosted on Render free tier — first request may take ~30s to wake up)*
+
 A REST API backend for a personal diary/journaling application, built with Spring Boot and PostgreSQL.
 
 ## Tech Stack
@@ -22,7 +25,6 @@ A REST API backend for a personal diary/journaling application, built with Sprin
 * different format support
 
 ## Project Structure
-
 
 ``` bash
 diary-tracker/
@@ -96,96 +98,36 @@ diary-tracker/
 │   │   │                   │   │       ├── LoginResponse.java
 │   │   │                   │   │       └── SignedUserResponse.java
 │   │   │                   │   ├── entity
-│   │   │                   │   │   └── Udiary-tracker/
-├── docs/
-│   ├── consider.md
-│   └── project-tree.md
-│
-├── script/
-│   └── bash/
-│       └── shell-profiling.sh
-│
-├── src/
-│   ├── main/
-│   │   ├── java/com/abssh/diary_tracker/
-│   │   │   ├── DiaryTrackerApplication.java
-│   │   │   │
-│   │   │   ├── config/
-│   │   │   │   ├── SecurityConfig.java
-│   │   │   │   ├── OpenApiConfig.java
-│   │   │   │   └── JpaConfig.java
-│   │   │   │
-│   │   │   ├── security/
-│   │   │   │   ├── JwtAuthFilter.java
-│   │   │   │   ├── JwtService.java
-│   │   │   │   ├── CustomUserDetailsService.java
-|   |   |   |   └── UserWrapper.java
-│   │   │   │
-│   │   │   ├── user/
-│   │   │   │   ├── User.java                  (entity)
-│   │   │   │   ├── UserRepository.java
-│   │   │   │   ├── UserService.java
-│   │   │   │   ├── AuthController.java        (register/login)
-│   │   │   │   └── dto/
-│   │   │   │       ├── response
-│   │   │   │       │   └── AuthResponse.java
-│   │   │   │       │
-│   │   │   │       └── request
-│   │   │   │           ├── RegisterRequest.java
-│   │   │   │           └── LoginRequest.java
-│   │   │   │           
-│   │   │   ├── entry/
-│   │   │   │   ├── DiaryEntry.java            (entity)
-│   │   │   │   ├── DiaryEntryRepository.java
-│   │   │   │   ├── DiaryEntryService.java
-│   │   │   │   ├── DiaryEntryController.java
-│   │   │   │   └── dto/
-│   │   │   │       ├── response
-│   │   │   │       │   └── EntryResponse.java
-│   │   │   │       │
-│   │   │   │       └── request
-│   │   │   │           ├── CreateEntryRequest.java
-│   │   │   │           └── UpdateEntryRequest.java
-|   |   |   |
-│   │   │   ├── diary/
-│   │   │   │   ├── Diary.java            (entity)
-│   │   │   │   ├── DiaryRepository.java
-│   │   │   │   ├── DiaryService.java
-│   │   │   │   ├── DiaryController.java
-│   │   │   │   └── dto/
-│   │   │   │       ├── response
-│   │   │   │       │   └── DiaryResponse.java
-│   │   │   │       │
-│   │   │   │       └── request
-│   │   │   │           ├── CreateDiaryRequest.java
-│   │   │   │           └── UpdateDiaryRequest.java
-│   │   │   │
-│   │   │   ├── common/
-│   │   │   │   ├── exception/
-│   │   │   │   │   ├── UsernameAlreadyExistsException.java
-│   │   │   │   │   └── UnauthorizedAccessException.java
-│   │   │   │   │
-│   │   │   │   └── GlobalExceptionHadler.java
-│   │   │   │
-│   │   │   └── util/
-│   │   │       └── DateUtils.java
-│   │   │
-│   │   └── resources/
-│   │       ├── application.yml
-│   │       ├── application-dev.yml
-│   │       ├── application-test.yml
-│   │       ├── application-prod.yml
-│   │       └── db/migration/
-│   │           ├── V1__init_users_table.sql
-│   │           └── V2__init_diary_entries_table.sql
-│   │
-│   └── test/
-│       └── java/com/abssh/diary_tracker/
-│           ├── entry/
-│           │   ├── DiaryEntryServiceTest.java
-│           │   └── DiaryEntryControllerIT.java   (Testcontainers)
-│           └── user/
-│               └── AuthControllerIT.java
+│   │   │                   │   │   └── User.java
+│   │   │                   │   └── exceptions
+│   │   │                   │       ├── InvalidCredentialsException.java
+│   │   │                   │       └── UsernameAlreadyExistsException.java
+│   │   │                   ├── UserExceptionHandler.java
+│   │   │                   ├── UserRepository.java
+│   │   │                   └── UserService.java
+│   │   └── resources
+│   │       ├── application-dev.yaml
+│   │       ├── application-prod.yaml
+│   │       ├── application-test.yaml
+│   │       ├── application.yaml
+│   │       └── db
+│   │           └── migration
+│   │               ├── V1__init_users_table.sql
+│   │               ├── V2__init_diaries_table.sql
+│   │               └── V3__init_diary_entries.sql
+│   └── test
+│       └── java
+│           └── com
+│               └── abssh
+│                   └── diary_tracker
+│                       ├── DiaryTrackerApplicationTests.java
+│                       ├── IntegrationTest.java
+│                       ├── TestcontainersConfiguration.java
+│                       ├── TestDiaryTrackerApplication.java
+│                       └── user
+│                           ├── AuthControllerTest.java
+│                           ├── UserRepositoryTest.java
+│                           └── UserServiceTest.java
 │
 │
 ├── compose.yml
@@ -193,7 +135,7 @@ diary-tracker/
 ├── .env.example
 ├── .gitignore
 ├── pom.xml
-└── README
+└── README.md
 ```
 
 ## Prerequisites
