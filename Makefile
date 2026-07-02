@@ -57,8 +57,8 @@ dev-run: check-env
 
 prod-run: check-env
 	@echo "Building and starting full prod stack..."
-	podman compose -f compose.prod.yaml --env-file .env.prod up --build
-
+	@podman compose -f $(COMPOSE_FILE) --env-file $(ENV_FILE) up --build
+	
 test:
 	@echo "Running tests (Testcontainers manages its own throwaway db)..."
 	DOCKER_HOST=$(DOCKER_HOST) mvn test
