@@ -3,8 +3,6 @@
 🔗 **Live API:** https://diary-tracker.onrender.com  
 *(hosted on Render free tier — first request may take ~30s to wake up)*
 
-A secure journaling REST API built with Spring Boot...
-
 A REST API backend for a personal diary/journaling application, built with Spring Boot and PostgreSQL.
 
 ## Tech Stack
