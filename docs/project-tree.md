@@ -22,8 +22,9 @@ diary-tracker/
 │   │   │               │   ├── exceptions
 │   │   │               │   │   └── EntityNotFoundException.java
 │   │   │               │   └── GlobalExceptionHandler.java
-│   │   │               ├── config
-│   │   │               │   └── SecurityConfig.java
+│   │   │               ├── config
+│   │   │               │   ├── OpenApiConfig.java
+│   │   │               │   └── SecurityConfig.java
 │   │   │               ├── diary
 │   │   │               │   ├── DiaryController.java
 │   │   │               │   ├── DiaryExceptionHandler.java
